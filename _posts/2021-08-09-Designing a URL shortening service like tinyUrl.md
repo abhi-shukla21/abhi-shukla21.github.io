@@ -62,3 +62,47 @@ To cache 20% of these requests, we will need 170GB of memory
 $$
 0.2 * 1.7billion * 500 bytes = 170GB
 $$
+
+## System APIs
+
+Following are the APIs for creating and deleting a shortened url:
+
+```
+createURL(api_dev_key, original_url, custome_alias=None, user_name=None, expire_date=None)
+```
+
+returns the shortened URL in case of success, otherwise the error code.
+
+```
+deleteURL(api_dev_key, url_key)
+```
+
+
+
+## Database Design
+
+- We need to store billions of records
+- Each object we store is small
+- There are no relationships between records- other than which user created the URL
+- Our service is read-heavy
+
+
+
+### Database Schema:
+
+```166
+URL										User
+Hash:varchar(16) - PK					UserId: int - PK
+OriginalURL: varchar (512)				Name: varchar(20)
+CreationDate: datetime					Email: varchar(32)
+ExpirationDate: datetime				CreationDate: datetime
+UserId: int								LastLogin: datetime
+```
+
+Since we anticipate storing billions of rows, and we don't need to use relationships b/w objects, a NoSQL store makes better choice. It's also easier to scale.
+
+
+
+## Basic System Design and Algorithm
+
+- We can use a Key Generation System (KGS) to pregenerate keys and have them handy to be used.
