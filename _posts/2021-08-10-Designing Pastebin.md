@@ -43,3 +43,47 @@ Pastebin shares some requirements with [URL shortening service](https://abhi-shu
 
 **Should we impose size limits on custom URLs?** 
 
+
+
+## Capacity Estimation and Constraints
+
+Our service will be more read heavy. We can assume 5:1 read to write ration.
+
+**Traffic Estimates:** Assuming we have one million pastes added every day.
+
+Write  traffic = 1M/(24hrs * 3600sec) = ~12 reads/sec
+
+Read traffic = 12*5 = ~60 reads/sec
+
+**Storage Estimates:** Assuming each text is 10KB
+
+One day's upload = 1M * 10KB = 10GB/day
+
+If we decide to store each text for 10 years
+
+Total storage = 10GB * 365 days * 10 years = 36TB for text data.
+
+For unique keys, if we use Base64 encoding, we would need 6 letters string for storing.
+
+**Bandwidth Estimates:** For write requests, it will be 120kbps (12 requests * 10KB per request)
+
+For read requests, 5*120kbps = 0.5MBps
+
+**Memory Estimates:** Following the 80-20 rule, we need to cache 20% requests per day
+
+ 0.20 * 5M * 10KB = ~10GB
+
+
+
+## System APIs
+
+We need three APIs: POST, GET and DELETE
+
+```
+POST /addPaste(api_dev_key, paste_data, custom_url=none, user_name=none, paste_name=none, expire_date=none) returns URL
+GET /getPaste(data_key) r
+DELETE /deletePaste(api_dev_key, data_key)
+```
+
+  
+

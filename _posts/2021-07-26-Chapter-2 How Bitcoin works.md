@@ -1,4 +1,4 @@
-layout: post
+ layout: post
 title: "Mastering Bitcoin: Chapter 2 - How Bitcoin Works"
 date: 2021-07-26 17:21:00 -0000
 categories: Bitcoin
