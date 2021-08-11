@@ -120,4 +120,14 @@ Here, 'URLHash' is the URL equivalent of tinyURL, and contentKey is a key pointi
 
 ## High Level Design
 
+At a high level, we need an application layer that will serve all the read and write requests. This application layer will communicate with a data storage layer to store and retrieve the data. Data storage layer can be segregated into a database and paste storage like Amazon S3 so that we can scale them individually.
+
 ![](/assets/pastebin-HLD.PNG)
+
+
+
+## Component Design
+
+Following component diagram explains the low level component design.
+
+![pastebin-LLD](/assets/pastebin-LLD.PNG)
