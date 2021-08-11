@@ -1,15 +1,5 @@
 
 
-```shell
-layout: post
-title: "Mastering Bitcoin: Chapter 1 - Introduction"
-date: 2021-07-26 17:00:00 -0000
-categories: Bitcoin
-permalink: /bitcoin-ch-1
-```
-
-# Chapter-1 Introduction
-
 
 
 Bitcoin consists of:
