@@ -1,3 +1,7 @@
+---
+
+---
+
 ## What is Pastebin?
 
 Pastebin like services allow users to paste text content or images over the network and generate unique URL to access uploaded data.
@@ -85,5 +89,35 @@ GET /getPaste(data_key) r
 DELETE /deletePaste(api_dev_key, data_key)
 ```
 
-  
+ 
 
+## Database Design 
+
+Few pointers about the system: 
+
+1. We need to store billions of records.
+2. Each metadata object will be small in size (1KB).
+3. Each paste object will be of medium size (few MB)
+4. There are no relationships between records, except which user created which Paste.
+5. Our services are read heavy.
+
+We would need two tables one for storing the pastes and the other for storing the users
+
+```
+Paste									User
+URLHash: varchar(16) - PK				UserID: int - PK
+ContentKey varchar(512)					Name: varchar(20)
+ExpirationDate: datetime				email: varchar(32)
+UserID: int								CreationDate: datetime
+CreationDate: datetime					LastLogin: datetime
+```
+
+
+
+Here, 'URLHash' is the URL equivalent of tinyURL, and contentKey is a key pointing to external storage that stores the Paste.
+
+
+
+## High Level Design
+
+![](/assets/pastebin-HLD.PNG)
