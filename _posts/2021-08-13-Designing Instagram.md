@@ -123,3 +123,11 @@ Separating the two services will also help us scale them individually depending 
 
 ![](/assets/instagram-component-design.PNG)
 
+
+
+## Reliability and Redundancy
+
+Creating replicas of data and components and adding redundancy will bring reliability in our system and will make it failsafe. We will  be able to serve the user and fetch the data from replicas and backup servers if the primary ones fail.
+
+![](/assets/instagram-reliability.PNG)
+
