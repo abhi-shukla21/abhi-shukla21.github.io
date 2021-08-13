@@ -131,3 +131,14 @@ Creating replicas of data and components and adding redundancy will bring reliab
 
 ![](/assets/instagram-reliability.PNG)
 
+
+
+## Data Sharding
+
+What are the different ways we can shard data?
+
+**Partitioning based on UserID:** Partition based on userId will be problematic when it comes to storing photos of hot users or celebrities. 
+
+
+
+**Partitioning based on PhotoID** This solves that.
