@@ -49,4 +49,3 @@ At a high level we need to store file and their metadata like file size, directo
 
 ## Component Design
 
-Lelo
