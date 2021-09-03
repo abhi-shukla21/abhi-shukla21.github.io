@@ -44,3 +44,9 @@ The user will specify a folder as workspace on his device. Any files/photos or f
 At a high level we need to store file and their metadata like file size, directory, who this file is shared with etc. So we need a server that can facilitate the user to upload the file **(block server)**. A server that can help maintaining the metadata table **(metadata table)** in SQL or NoSQL database. We also need a server that can notify all the users whenever there's some change in the workspace or a particular file so that they can sync it **(Synchronization server)**.
 
 ![](/assets/Dropbox_HLD.PNG)
+
+
+
+## Component Design
+
+Lelo
